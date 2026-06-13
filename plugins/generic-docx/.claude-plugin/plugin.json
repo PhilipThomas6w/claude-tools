@@ -1,0 +1,7 @@
+{
+  "name": "generic-docx",
+  "description": "Generate Microsoft Word (.docx) documents in a neutral, unbranded professional style: A4, Arial, neutral slate palette, document-control and change-history tables, contents field, branded tables and code blocks, footer with title and page number. The default style pack for the ai-project-kickoff process; use for non-branded projects. Drop a logo into assets/ and adjust the palette to brand it.",
+  "version": "1.0.0",
+  "author": { "name": "Philip Thomas" },
+  "keywords": ["docx","word","documentation","style","neutral","generic"]
+}

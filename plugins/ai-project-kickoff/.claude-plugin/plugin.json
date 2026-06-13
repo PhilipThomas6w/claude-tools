@@ -1,0 +1,7 @@
+{
+  "name": "ai-project-kickoff",
+  "description": "Brand-neutral standard process for AI projects: requirements gathering captured as working markdown in docs/ (the source of truth), with the document package rendered at each review gate (PoC and production) by the project's chosen document style pack (default generic-docx; tecman-docx for Tecman projects; or your own). Gate-aware taxonomy with the LLD at the PoC gate. Provides /new-ai-project and /render-gate-package, the ai-poc-docs skill, discovery (reasoning model) and gate-renderer (Sonnet) agents, and a design-reviewer agent.",
+  "version": "3.0.0",
+  "author": { "name": "Philip Thomas" },
+  "keywords": ["ai","project","kickoff","requirements","documentation","poc","production","gates","standards","brand-neutral"]
+}
