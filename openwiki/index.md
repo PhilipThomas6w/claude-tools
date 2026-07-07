@@ -15,7 +15,6 @@ A Claude Code plugin marketplace (`claude-tools`, GitHub: `PhilipThomas6w/claude
 - `.claude-plugin/marketplace.json` — marketplace manifest listing all six plugins and their versions
 - `docs/extraction/` — working notes on the Fable 5 extraction that produced reasoning-core (method, window plan, status log); process documentation, not part of any plugin
 - `plugins/<name>/` — one directory per plugin, each with its own `.claude-plugin/plugin.json`
-- `knowledge-vault/` — a separate, unrelated bundle: a runbook and starter zip for setting up a personal Obsidian knowledge vault on a new machine. Not part of the plugin marketplace itself.
 
 ## Conventions
 - No repo-level build system; plugins are markdown (commands, agents, skills) plus a few PowerShell/Python scripts. There is no `build/verify.ps1` here — this repo is not itself running the loop-harness.

@@ -1,6 +1,6 @@
 # claude-tools — personal Claude Code marketplace
 
-Personal Claude Code plugins covering the software delivery workflow: discovery, design, design review, and gated implementation.
+Personal Claude Code plugins covering the software delivery workflow: discovery, design, design review, and gated implementation, plus a base reasoning layer underneath all of them.
 
 ## Workflow
 
@@ -16,10 +16,13 @@ discovery ──> design ──> design review ──> implementation (loop-harn
 
 `ai-agent-pack` composes with `loop-harness` for implementation work that is itself building AI agents, connectors, or MCP servers.
 
+`reasoning-core` is not a stage in this pipeline — it is a prose reasoning layer any plugin may assume sits beneath it, standalone and dependency-free. See [Base layer](#base-layer).
+
 ## Plugins
 
 | Plugin | Description |
 |--------|-------------|
+| `reasoning-core` | Base reasoning layer distilled from Fable 5: seven behaviour-sliced skills (`read-the-request`, `decompose-and-check`, `numbers-discipline`, `calibrated-uncertainty`, `investigate-first`, `report-findings`, `finish-check`) plus a trap-based eval set proving each skill moves behaviour on Opus and Sonnet. Standalone — depends on nothing; every other plugin may assume it as the layer beneath. **Draft status**: a skill ships only once its evals flip a baseline failure to a pass without regressing anything (see `plugins/reasoning-core/evals/README.md`). |
 | `loop-harness` | Stack-agnostic loop-engineering harness. Provides hooks (SessionStart, PreToolUse, Stop), agents (`explorer`, `maker`, `checker`, `verifier`), commands (`/init-harness`, `/doc-refresh`), and skills (`harness-conventions`, `add-change`). Gated change procedure: nothing finishes without `build/verify.ps1` exiting 0. Tracks cost per accepted change in `LEDGER.csv`. Per-stack verify templates cover dotnet, node, python, AL, and static. |
 | `ai-project` | Discovery and design process for AI projects. Requirements gathering captured as working markdown in `docs/`, with the document package rendered at each gate (PoC/production) by the project's chosen **document style pack**. Provides `/new-ai-project`, `/render-gate-package`, the `ai-poc-docs` skill, `discovery`/`gate-renderer`/`design-reviewer` agents. Hands off to `loop-harness` once design is approved. |
 | `software-project` | Discovery and design process for general (non-AI) software projects — the counterpart to `ai-project`. Same working-markdown → gated `.docx` package model, but produces BRD, SRS, NFR spec, HLD/LLD, ADRs, RAID log, test plan, and a traceability matrix, citing real industry standards (ISO/IEC/IEEE 29148 & 42010, ISO/IEC 25010, ISO/IEC/IEEE 29119, ISO/IEC 27001, OWASP ASVS, ISO 21502, PMBOK, PRINCE2) instead of AI-specific ones. Provides `/new-software-project`, `/render-gate-package`, the `software-design-docs` skill, `discovery`/`gate-renderer`/`design-reviewer` agents. |
@@ -39,7 +42,13 @@ software-project ┬──> generic-docx (document rendering)
 
 loop-harness ────┬──> ai-agent-pack (optional, when building AI features)
                  └──> standalone
+
+reasoning-core ──── foundation beneath every plugin above (no deps, none required)
 ```
+
+### Base layer
+
+`reasoning-core` is the prose counterpart to `loop-harness`'s structural enforcement: where the harness gates completion with a real `build/verify` exit code, `reasoning-core` covers the judgement calls that happen before and around that gate (scope discipline, calibrated uncertainty, decomposition, reporting). `finish-check` explicitly defers to a project verify gate where one exists rather than duplicating it. Any plugin may assume `reasoning-core` is installed; `reasoning-core` itself assumes nothing.
 
 **AI-project workflow**:
 1. `/new-ai-project` – discovery + docs scaffolding
@@ -58,6 +67,7 @@ loop-harness ────┬──> ai-agent-pack (optional, when building AI fe
 
 ```
 /plugin marketplace add <your-github-username>/<this-repo>
+/plugin install reasoning-core@claude-tools
 /plugin install loop-harness@claude-tools
 /plugin install ai-project@claude-tools
 /plugin install software-project@claude-tools
@@ -83,6 +93,7 @@ loop-harness ────┬──> ai-agent-pack (optional, when building AI fe
 ## Roadmap
 
 - Resolve the `ai-agent-pack` version mismatch between `marketplace.json` (0.4.0) and its own `plugin.json` (0.1.0)
+- `reasoning-core`: run the baseline and A/B trap evals (see `plugins/reasoning-core/evals/README.md`) and promote skills out of draft status; see `docs/extraction/README.md` for the window plan
 
 ---
 
