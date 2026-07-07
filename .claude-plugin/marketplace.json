@@ -4,6 +4,14 @@
   "description": "Personal Claude Code tools for professional software engineering: a stack-agnostic loop-engineering harness for implementation work on any project, plus discovery-through-document-delivery processes (one for AI projects, one for general software projects) and AI build tooling for the AI-project subset of that work.",
   "plugins": [
     {
+      "name": "reasoning-core",
+      "source": "./plugins/reasoning-core",
+      "description": "Base reasoning layer distilled from Fable 5: seven behaviour-sliced skills (read-the-request, decompose-and-check, numbers-discipline, calibrated-uncertainty, investigate-first, report-findings, finish-check) plus a trap-based eval set proving each skill moves behaviour on Opus and Sonnet. Standalone with no dependencies; other plugins may build on it.",
+      "version": "0.1.0",
+      "author": { "name": "Philip Thomas" },
+      "keywords": ["reasoning", "verification", "calibration", "judgement", "distillation", "evals"]
+    },
+    {
       "name": "ai-project",
       "source": "./plugins/ai-project",
       "description": "Discovery and design process for AI projects specifically, not a general project process. Requirements gathering captured as working markdown, with the document package rendered at each gate by the project's chosen style pack (default generic-docx). Includes /new-ai-project, /render-gate-package, the ai-poc-docs skill, discovery and gate-renderer agents, and a design-reviewer agent. Hands off to loop-harness for implementation.",

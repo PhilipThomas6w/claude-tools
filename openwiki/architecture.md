@@ -1,4 +1,4 @@
-# Architecture: how the five plugins compose
+# Architecture: how the six plugins compose
 
 ## The workflow, not the plugin list, is the right mental model
 
@@ -29,6 +29,10 @@ The two plugins are structurally parallel but not interchangeable in content: `a
 ## loop-harness + ai-agent-pack: the general backbone, plus an AI-specific extension
 
 `loop-harness` scaffolds `docs/VISION.md`, `STATE.md`, `build/verify.ps1`, a repo `CLAUDE.md`, and a cost ledger into *any* project — dotnet, node, python, AL, static, whatever — and wires four hooks (SessionStart, PreToolUse/Bash+PowerShell, Stop, SubagentStop) that make "done" mean "the verify gate exits 0" rather than a model's self-assessment (see [[loop-harness]] for the full detail, including the Fable-5 review that hardened these). It is used on every implementation task, whether the project came through `ai-project`, `software-project`, or neither. `ai-agent-pack` is optional and adds skills specific to building AI agents/connectors/MCP servers on top of that same gated loop; it does not work standalone (it assumes the harness's `build/verify` and maker/checker convention already exist).
+
+## reasoning-core: the layer beneath all of it
+
+`reasoning-core` (see [[reasoning-core]]) is the base reasoning layer: seven trigger-loaded skills distilled from Fable 5 (request triage, decomposition and checking, numeric discipline, calibrated uncertainty, investigation method, findings reporting, finish checking) so Opus and Sonnet replicate as much of its judgement as transfers through prose. Composition is strictly one-directional: it depends on no other plugin, and no plugin depends on it, but every workflow above benefits from it being installed. It is the prose counterpart to `loop-harness`'s structural enforcement; where a project has a verify gate, `finish-check` defers to it. Each skill is gated by a trap-based eval set in the plugin itself (a skill lands only when it flips a baseline failure on the target model), which extends the marketplace's "cost per accepted change" philosophy to the skills themselves.
 
 ## Model routing pattern (shared across all fronts)
 

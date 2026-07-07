@@ -1,0 +1,8 @@
+{
+  "name": "reasoning-core",
+  "version": "0.1.0",
+  "description": "Base reasoning layer distilled from Fable 5: seven behaviour-sliced skills (request triage, decomposition and checking, numeric discipline, calibrated uncertainty, investigation method, findings reporting, finish checking) plus a trap-based eval set that proves each skill moves behaviour on Opus and Sonnet. Standalone: depends on no other plugin; other plugins may build on it.",
+  "author": { "name": "Philip Thomas" },
+  "keywords": ["reasoning", "verification", "calibration", "judgement", "distillation", "evals"],
+  "license": "MIT"
+}
