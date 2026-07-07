@@ -40,6 +40,6 @@ The two plugins are structurally parallel but not interchangeable in content: `a
 - The actual implementation or generation work → mid-tier (`maker`, `gate-renderer`: sonnet).
 - Judgement, critique, or careful elicitation that must not be gamed → the strongest reasoning model (`discovery`: opus; `checker`/`manifest-checker`: sonnet but structurally forbidden from grading its own work).
 
-## Hard invariant across all five plugins
+## Hard invariant: the maker/critic split
 
-The **maker/critic split** is structural, not a suggestion: no agent that produces a change is also the one that approves it. `loop-harness` enforces this with separate `maker`/`checker` agents plus a `build/verify.ps1` gate; `ai-project` and `software-project` each enforce it by having `design-reviewer` review documents it never authored; `ai-agent-pack`'s `manifest-checker` judges a manifest it never wrote.
+Structural, not a suggestion: no agent that produces a change is also the one that approves it. `loop-harness` enforces this with separate `maker`/`checker` agents plus a `build/verify.ps1` gate; `ai-project` and `software-project` each enforce it by having `design-reviewer` review documents it never authored; `ai-agent-pack`'s `manifest-checker` judges a manifest it never wrote. `generic-docx` has no split (it's a rendering skill, not a review point); `reasoning-core` covers the same principle only in prose (`finish-check` defers to a real verify gate where one exists rather than substituting for it).
