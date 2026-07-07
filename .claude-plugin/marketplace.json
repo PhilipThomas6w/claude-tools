@@ -1,5 +1,5 @@
 {
-  "name": "pt-tools",
+  "name": "claude-tools",
   "owner": { "name": "Philip Thomas" },
   "description": "Personal Claude Code tools: a brand-neutral AI project kickoff process and document style packs.",
   "plugins": [

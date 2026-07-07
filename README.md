@@ -1,4 +1,4 @@
-# pt-tools — personal Claude Code marketplace
+# claude-tools — personal Claude Code marketplace
 
 Brand-neutral AI project tooling and document style packs for the Microsoft ecosystem.
 
@@ -35,10 +35,10 @@ loop-harness ────────┬──> ai-agent-pack (optional)
 
 ```
 /plugin marketplace add <your-github-username>/<this-repo>
-/plugin install ai-project-kickoff@pt-tools
-/plugin install loop-harness@pt-tools
-/plugin install ai-agent-pack@pt-tools
-/plugin install generic-docx@pt-tools
+/plugin install ai-project-kickoff@claude-tools
+/plugin install loop-harness@claude-tools
+/plugin install ai-agent-pack@claude-tools
+/plugin install generic-docx@claude-tools
 ```
 
 ## Requirements
