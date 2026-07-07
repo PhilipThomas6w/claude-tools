@@ -1,8 +1,8 @@
-# ai-project-kickoff
+# ai-project
 
-**Path:** `plugins/ai-project-kickoff/` · **Version:** 3.0.0 (per marketplace.json — verify against `plugin.json` before relying on it, they can drift)
+**Path:** `plugins/ai-project/` · **Version:** 3.0.0 (per marketplace.json — verify against `plugin.json` before relying on it, they can drift). Renamed from `ai-project-kickoff` — this is the AI-project-specific discovery/design vertical, not a general project process; see [[architecture]] for scope.
 
-Brand-neutral standard process for kicking off an in-house AI project: gated requirements capture in version-controlled markdown, rendered to a branded document package at each review gate. See [[architecture]] for how it relates to `generic-docx`.
+Standard process for discovery and design on an **AI project specifically**: gated requirements capture in version-controlled markdown, rendered to a branded document package at each review gate, then handed off to `loop-harness` for implementation. See [[architecture]] for how it relates to `generic-docx` and `loop-harness`.
 
 ## Entry points
 - `/new-ai-project` command — scaffolds `docs/` (requirements/, design/, evaluation/, governance/, adr/), `delivery-plan.md`, `glossary.md`, a seeded `CLAUDE.md`, then runs discovery one focused question at a time.

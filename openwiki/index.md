@@ -1,13 +1,13 @@
 # openwiki: claude-tools
 
-A Claude Code plugin marketplace (`claude-tools`, GitHub: `PhilipThomas6w/claude-tools`). Four plugins, each independently installable, two of which compose together.
+A Claude Code plugin marketplace (`claude-tools`, GitHub: `PhilipThomas6w/claude-tools`) for professional software engineering. **`loop-harness` is the backbone, used for all implementation work on any stack — AI engineering is a subset of that work, not the whole of it.** `ai-project` and `ai-agent-pack` are the AI-specific pieces.
 
 ## Pages
-- [[architecture]] — how the plugins fit together, dependency directions
-- [[ai-project-kickoff]] — AI project discovery → gated document delivery
-- [[loop-harness]] — stack-agnostic loop-engineering harness (hooks, maker/checker, verify gate)
+- [[architecture]] — how the plugins fit together, and the discovery → design → design review → loop-harness workflow
+- [[loop-harness]] — stack-agnostic loop-engineering harness (hooks, maker/checker, verify gate) — use for all projects
+- [[ai-project]] — discovery/design process for AI projects specifically (was `ai-project-kickoff`)
 - [[ai-agent-pack]] — build-tooling skills for agents/connectors/MCP servers, composes with loop-harness
-- [[generic-docx]] — neutral .docx style pack, the default renderer for ai-project-kickoff
+- [[generic-docx]] — neutral .docx style pack, the default renderer for ai-project
 
 ## Repo layout
 - `.claude-plugin/marketplace.json` — marketplace manifest listing all four plugins and their versions

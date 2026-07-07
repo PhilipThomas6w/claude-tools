@@ -1,6 +1,6 @@
 ---
 name: generic-docx
-description: Create or restyle Microsoft Word (.docx) documents in a neutral, unbranded professional style. Use for charters, BRDs, requirements, designs, reports and similar deliverables that should not carry a specific brand. Produces A4 Arial documents with a neutral slate palette, a Document Control table, a Change History table, a live Table-of-Contents field, tables and code blocks, and a footer with the document title and page number. The default style pack for the ai-project-kickoff process. Trigger when asked for an unbranded/neutral Word document, or when a project's declared style pack is generic-docx.
+description: Create or restyle Microsoft Word (.docx) documents in a neutral, unbranded professional style. Use for charters, BRDs, requirements, designs, reports and similar deliverables that should not carry a specific brand. Produces A4 Arial documents with a neutral slate palette, a Document Control table, a Change History table, a live Table-of-Contents field, tables and code blocks, and a footer with the document title and page number. The default style pack for the ai-project process. Trigger when asked for an unbranded/neutral Word document, or when a project's declared style pack is generic-docx.
 ---
 
 # Generic (unbranded) .docx generation

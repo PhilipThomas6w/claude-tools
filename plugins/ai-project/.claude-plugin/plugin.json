@@ -1,0 +1,7 @@
+{
+  "name": "ai-project",
+  "description": "Discovery and design process for AI projects specifically (one vertical of the claude-tools marketplace, not the whole of it): requirements gathering captured as working markdown in docs/ (the source of truth), with the document package rendered at each review gate (PoC and production) by the project's chosen document style pack (default generic-docx; or your own). Gate-aware taxonomy with the LLD at the PoC gate. Provides /new-ai-project and /render-gate-package, the ai-poc-docs skill, discovery (reasoning model) and gate-renderer (Sonnet) agents, and a design-reviewer agent. Hands off to loop-harness for implementation.",
+  "version": "3.0.0",
+  "author": { "name": "Philip Thomas" },
+  "keywords": ["ai","project","requirements","documentation","poc","production","gates","standards","brand-neutral"]
+}

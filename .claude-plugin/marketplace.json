@@ -1,20 +1,20 @@
 {
   "name": "claude-tools",
   "owner": { "name": "Philip Thomas" },
-  "description": "Personal Claude Code tools: a brand-neutral AI project kickoff process and document style packs.",
+  "description": "Personal Claude Code tools for professional software engineering: a stack-agnostic loop-engineering harness for implementation work on any project, plus a discovery-through-document-delivery process and AI build tooling for the AI-project subset of that work.",
   "plugins": [
     {
-      "name": "ai-project-kickoff",
-      "source": "./plugins/ai-project-kickoff",
-      "description": "Brand-neutral standard process for AI projects: requirements gathering captured as working markdown, with the document package rendered at each gate by the project's chosen style pack (default generic-docx). Includes /new-ai-project, /render-gate-package, the ai-poc-docs skill, discovery and gate-renderer agents, and a design-reviewer agent.",
+      "name": "ai-project",
+      "source": "./plugins/ai-project",
+      "description": "Discovery and design process for AI projects specifically, not a general project process. Requirements gathering captured as working markdown, with the document package rendered at each gate by the project's chosen style pack (default generic-docx). Includes /new-ai-project, /render-gate-package, the ai-poc-docs skill, discovery and gate-renderer agents, and a design-reviewer agent. Hands off to loop-harness for implementation.",
       "version": "3.0.0",
       "author": { "name": "Philip Thomas" },
-      "keywords": ["ai","project","kickoff","requirements","documentation","gates","standards","brand-neutral"]
+      "keywords": ["ai","project","requirements","documentation","gates","standards","brand-neutral"]
     },
     {
       "name": "generic-docx",
       "source": "./plugins/generic-docx",
-      "description": "Neutral, unbranded .docx style pack (A4, Arial, neutral palette). The default style pack for ai-project-kickoff.",
+      "description": "Neutral, unbranded .docx style pack (A4, Arial, neutral palette). The default style pack for ai-project.",
       "version": "1.0.0",
       "author": { "name": "Philip Thomas" },
       "keywords": ["docx","style","neutral","generic"]
