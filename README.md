@@ -11,14 +11,14 @@ Brand-neutral AI project tooling and document style packs for the Microsoft ecos
 | `ai-agent-pack` | Build tooling for AI features, composes with `loop-harness`. Provides `manifest-checker` agent and skills for building agents (`build-agent`), connectors (`build-connector`), MCP servers (`build-mcp-server`), and evaluations (`write-evals`). Emphasises config-first, declarative AI development with human gates for consequential actions. |
 | `generic-docx` | Neutral, unbranded `.docx` style pack. The **default** for `ai-project-kickoff`. A4, Arial, neutral palette. Includes Document Control, Change History, live ToC, and footer with title + page number. |
 
-Brand packs are separate: the **Tecman** style pack (`tecman-docx`) lives in the `tecman-tools` marketplace and is used only for Tecman projects. A personal brand pack (`personal-docx`) can be added here.
+Brand packs are separate: a personal brand pack (`personal-docx`) can be added here.
 
 ## Integration Pattern
 
 The plugins compose hierarchically:
 
 ```
-ai-project-kickoff ──┬──> generic-docx (or tecman-docx)
+ai-project-kickoff ──┬──> generic-docx
                      └──> (standalone)
 
 loop-harness ────────┬──> ai-agent-pack (optional)

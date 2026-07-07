@@ -6,7 +6,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-# ---- Tecman brand palette (teal ramp) ----
+# ---- Neutral palette ----
 TITLE_C = RGBColor(0x1F,0x29,0x37)   # 005F66 title / H2
 SUB_C   = RGBColor(0x37,0x41,0x51)   # 007A83 subtitle / H3
 H1_C    = RGBColor(0x11,0x18,0x27)   # 1A3234 H1 / dark teal

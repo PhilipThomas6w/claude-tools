@@ -49,7 +49,6 @@ This skill covers discovery → working markdown → PoC gate package, with the 
 Rendering is delegated to a **document style pack** chosen per project — this plugin is brand-neutral. Declare the project's style pack at kickoff and record it in `CLAUDE.md` (for example `Document style pack: generic-docx`):
 
 - `generic-docx` — neutral, unbranded (**default**).
-- `tecman-docx` — Tecman brand (use only for projects explicitly defined as Tecman projects).
 - `personal-docx` or another pack — your own or a client's brand.
 - `none` — markdown-only; skip rendering.
 
