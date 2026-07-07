@@ -1,7 +1,7 @@
 {
   "name": "loop-harness",
-  "version": "0.4.0",
-  "description": "A stack-agnostic loop-engineering harness for any coding project (PowerShell/pwsh). /init-harness scaffolds the project layer and, if design docs already exist in docs/, distils VISION and STATE from them; otherwise it interviews you. Ships session-context, a deny-list guard, a Stop-gate on build/verify.ps1, maker/checker/explorer/verifier sub-agents, and per-stack verify templates. Agents are config, tools are code, nothing finishes without the gate.",
+  "version": "0.5.0",
+  "description": "A stack-agnostic loop-engineering harness for any coding project (PowerShell/pwsh). /init-harness scaffolds the project layer and, if design docs already exist in docs/, distils VISION and STATE from them; otherwise it interviews you. Ships session-context, a deny-list guard, a Stop-gate on build/verify.ps1, maker/checker/explorer/verifier sub-agents, and per-stack verify templates. Agents are config, tools are code, nothing finishes without the gate. Includes harness-audit, claude-code-hook-facts, and verify-gate-authoring skills distilled from a Fable-5-led review of this same harness.",
   "author": {
     "name": "Philip Thomas"
   },
@@ -10,7 +10,9 @@
     "harness",
     "verify",
     "gate",
-    "subagents"
+    "subagents",
+    "harness-audit",
+    "hooks"
   ],
   "license": "MIT"
 }

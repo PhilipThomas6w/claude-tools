@@ -14,7 +14,7 @@ PowerShell 7+ (`pwsh`) on the PATH. The hooks and the verify entrypoint (`build/
   - Stop runs `build/verify.ps1 -Fast` and refuses to finish until it passes (the Ralph Wiggum defence).
 - **Sub-agents**: `explorer` (read-only mapping), `maker` (one scoped change, isolated), `checker` (runs the gate, reviews the diff), `verifier` (deterministic gate run). The maker never grades its own work.
 - **Commands**: `/init-harness [stack]` scaffolds the per-project files; `/doc-refresh` maintains the codebase wiki (OpenWiki / Karpathy pattern).
-- **Skills**: `harness-conventions` (the loop discipline) and `add-change` (the gated change procedure).
+- **Skills**: `harness-conventions` (the loop discipline), `add-change` (the gated change procedure), `harness-audit` (claim-vs-enforcement review of any harness/hook/gate), `claude-code-hook-facts` (verified hook registration timing and output schemas), `verify-gate-authoring` (what makes a verify stage real vs a placeholder).
 - **Templates**: `VISION.md`, `STATE.md`, `LEDGER.csv`, and per-stack `verify.ps1` scripts (dotnet, node, python, al, static).
 
 ## Setup

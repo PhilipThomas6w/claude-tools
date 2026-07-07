@@ -22,10 +22,10 @@
     {
       "name": "loop-harness",
       "source": "./plugins/loop-harness",
-      "description": "Stack-agnostic loop-engineering harness: pwsh hooks (session context, deny-list guard, Stop gate on build/verify.ps1), maker/checker/explorer/verifier sub-agents, /init-harness bootstrap, per-stack verify templates.",
-      "version": "0.4.0",
+      "description": "Stack-agnostic loop-engineering harness: pwsh hooks (session context, deny-list guard, Stop gate on build/verify.ps1), maker/checker/explorer/verifier sub-agents, /init-harness bootstrap, per-stack verify templates, and harness-audit/claude-code-hook-facts/verify-gate-authoring skills.",
+      "version": "0.5.0",
       "author": { "name": "Philip Thomas" },
-      "keywords": ["build", "test", "implement"]
+      "keywords": ["build", "test", "implement", "harness-audit", "hooks"]
     },
     {
       "name": "ai-agent-pack",
