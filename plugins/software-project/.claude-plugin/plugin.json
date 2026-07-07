@@ -1,0 +1,7 @@
+{
+  "name": "software-project",
+  "description": "Discovery and design process for general software projects (the non-AI counterpart to ai-project): requirements gathering captured as working markdown in docs/ (the source of truth), with the document package rendered at each review gate (design and delivery) by the project's chosen document style pack (default generic-docx; or your own). Gate-aware taxonomy with the LLD at the design gate. Provides /new-software-project and /render-gate-package, the software-design-docs skill, discovery (reasoning model) and gate-renderer (Sonnet) agents, and a design-reviewer agent. Hands off to loop-harness for implementation.",
+  "version": "1.0.0",
+  "author": { "name": "Philip Thomas" },
+  "keywords": ["software", "project", "requirements", "documentation", "brd", "srs", "hld", "lld", "design", "delivery", "gates", "standards", "brand-neutral"]
+}

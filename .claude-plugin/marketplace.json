@@ -1,7 +1,7 @@
 {
   "name": "claude-tools",
   "owner": { "name": "Philip Thomas" },
-  "description": "Personal Claude Code tools for professional software engineering: a stack-agnostic loop-engineering harness for implementation work on any project, plus a discovery-through-document-delivery process and AI build tooling for the AI-project subset of that work.",
+  "description": "Personal Claude Code tools for professional software engineering: a stack-agnostic loop-engineering harness for implementation work on any project, plus discovery-through-document-delivery processes (one for AI projects, one for general software projects) and AI build tooling for the AI-project subset of that work.",
   "plugins": [
     {
       "name": "ai-project",
@@ -12,9 +12,17 @@
       "keywords": ["ai","project","requirements","documentation","gates","standards","brand-neutral"]
     },
     {
+      "name": "software-project",
+      "source": "./plugins/software-project",
+      "description": "Discovery and design process for general (non-AI) software projects: the counterpart to ai-project. Requirements gathering captured as working markdown, with the document package (BRD, SRS, NFR spec, HLD/LLD, ADRs, RAID log, test plan, traceability matrix, delivery plan) rendered at each gate by the project's chosen style pack (default generic-docx), citing real industry standards (ISO/IEC/IEEE 29148 and 42010, ISO/IEC 25010, ISO/IEC/IEEE 29119, ISO/IEC 27001, OWASP ASVS, ISO 21502, PMBOK, PRINCE2). Includes /new-software-project, /render-gate-package, the software-design-docs skill, discovery and gate-renderer agents, and a design-reviewer agent. Hands off to loop-harness for implementation.",
+      "version": "1.0.0",
+      "author": { "name": "Philip Thomas" },
+      "keywords": ["software", "project", "requirements", "documentation", "brd", "srs", "design", "gates", "standards", "brand-neutral"]
+    },
+    {
       "name": "generic-docx",
       "source": "./plugins/generic-docx",
-      "description": "Neutral, unbranded .docx style pack (A4, Arial, neutral palette). The default style pack for ai-project.",
+      "description": "Neutral, unbranded .docx style pack (A4, Arial, neutral palette). The default style pack for ai-project and software-project.",
       "version": "1.0.0",
       "author": { "name": "Philip Thomas" },
       "keywords": ["docx","style","neutral","generic"]

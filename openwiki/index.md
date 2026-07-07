@@ -1,16 +1,17 @@
 # openwiki: claude-tools
 
-A Claude Code plugin marketplace (`claude-tools`, GitHub: `PhilipThomas6w/claude-tools`) covering discovery, design, design review, and gated implementation. `loop-harness` handles implementation for any project; `ai-project` and `ai-agent-pack` are the AI-specific pieces (discovery/design, and agent-building tooling respectively).
+A Claude Code plugin marketplace (`claude-tools`, GitHub: `PhilipThomas6w/claude-tools`) covering discovery, design, design review, and gated implementation. `loop-harness` handles implementation for any project; `ai-project`/`software-project` are the discovery/design pieces (AI projects and general software projects respectively); `ai-agent-pack` is the AI-specific implementation extension.
 
 ## Pages
 - [[architecture]] — how the plugins fit together, and the discovery → design → design review → loop-harness workflow
 - [[loop-harness]] — stack-agnostic loop-engineering harness (hooks, maker/checker, verify gate) — use for all projects
 - [[ai-project]] — discovery/design process for AI projects specifically (was `ai-project-kickoff`)
+- [[software-project]] — discovery/design process for general (non-AI) software projects — the counterpart to ai-project
 - [[ai-agent-pack]] — build-tooling skills for agents/connectors/MCP servers, composes with loop-harness
-- [[generic-docx]] — neutral .docx style pack, the default renderer for ai-project
+- [[generic-docx]] — neutral .docx style pack, the default renderer for both ai-project and software-project
 
 ## Repo layout
-- `.claude-plugin/marketplace.json` — marketplace manifest listing all four plugins and their versions
+- `.claude-plugin/marketplace.json` — marketplace manifest listing all five plugins and their versions
 - `plugins/<name>/` — one directory per plugin, each with its own `.claude-plugin/plugin.json`
 - `knowledge-vault/` — a separate, unrelated bundle: a runbook and starter zip for setting up a personal Obsidian knowledge vault on a new machine. Not part of the plugin marketplace itself.
 

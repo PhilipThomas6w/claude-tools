@@ -10,7 +10,7 @@ Render the **$ARGUMENTS** gate package (default `poc` if no argument is given).
 Using the `ai-poc-docs` skill's `references/gate-taxonomy.md` (taxonomy + roll-up mapping), `references/document-specs.md` (per-document sections), and `references/standards.md`:
 
 1. Read the current working markdown in `docs/`.
-2. For each document in the **$ARGUMENTS** column of the taxonomy, consolidate the mapped working files and render a branded `.docx` with the selected document style pack (A4, Arial, teal palette, logo, Document Control + Change History tables, contents field, branded tables/code, footer). The **PoC gate includes the LLD**.
+2. For each document in the **$ARGUMENTS** column of the taxonomy, consolidate the mapped working files and render a branded `.docx` with the selected document style pack. The **PoC gate includes the LLD**.
 3. Write the rendered files to `gates/$ARGUMENTS/`, named `<Project>_<ShortName>.docx`.
 4. Carry traceability IDs (`BR-`, `FR-`, `NFR-`, `R-`, `A-`, `ADR-`, `TC-`) through from the markdown, and have each document cite the standard(s) it satisfies.
 5. Where the markdown is incomplete, render what exists and list the gaps as `[TBC – owner]`; do not invent content.
