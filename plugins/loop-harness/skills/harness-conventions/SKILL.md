@@ -19,15 +19,16 @@ Apply these conventions in any repository that carries the loop-engineering harn
 
 ## Loop mechanics
 - Work one scoped item at a time. Follow the repo's own skills and `CLAUDE.md`; match existing patterns; change only what was asked.
-- The Stop hook runs `build/verify` and refuses to finish until it passes. If it blocks, fix and re-run; do not argue with the gate.
-- Brakes: cap maker/checker round-trips (default 5), then write the blocker to `STATE.md` and stop. Watch for no progress (same failing tests or same tool call twice) and stop rather than spin.
+- The Stop hook (and SubagentStop, so a maker sub-agent's own turn is gated too) runs `build/verify` and refuses to finish until it passes. It's skipped automatically when the tree has no uncommitted changes, so a pre-existing red repo doesn't block unrelated read-only turns. If it blocks, fix and re-run; do not argue with the gate.
+- Brakes: the round-trip cap (5 consecutive verify failures, per session) is enforced in `run-verify.ps1` itself, not just asserted — on the 5th failure it stops blocking and tells you to write the blocker to `STATE.md` and stop. Watch for no progress (same failing tests or same tool call twice) and stop rather than spin even before the hard cap hits.
 
 ## Context and memory
 - Context is a budget, not a bucket. Offload large output to files; keep only the slice you need; hand messy subtasks to a sub-agent so only the clean result returns.
 - The agent forgets; the repo does not. Durable memory lives on disk: `VISION.md`, `STATE.md`, ADRs, and the `openwiki/` codebase wiki. Read `openwiki/` first for codebase context.
 
 ## Sub-agents
-- explorer (read-only mapping), maker (one scoped change, isolated), checker (runs the gate, reviews the diff), verifier (deterministic gate run). Use them to keep the main session clean and the maker and checker separate.
+- explorer (read-only mapping, haiku, low effort), maker (one scoped change, isolated, sonnet at medium effort — not inherited session effort), checker (runs the gate, reviews the diff, sonnet by default — escalate to opus for security-relevant, architectural, or twice-bounced changes), verifier (deterministic gate run, haiku, low effort). Use them to keep the main session clean and the maker and checker separate.
+- `/work-next` drives one full maker-then-checker cycle off the top of `STATE.md`'s queue automatically, stopping on the round-trip cap — use it instead of invoking maker/checker by hand when you just want the queue worked.
 
 ## Safety
 - Never commit secrets; use Key Vault or env references. Never deploy from the session; deployment is pipeline-gated. Ask before destructive actions. Read generated diffs and generated docs before trusting them.

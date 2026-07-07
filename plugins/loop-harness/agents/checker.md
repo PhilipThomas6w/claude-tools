@@ -9,6 +9,7 @@ assistant: "I'll run the checker agent: it runs the gate and reviews the diff, t
 <commentary>The maker/checker split is structural; the worker must not grade its own homework.</commentary>
 </example>
 model: sonnet
+maxTurns: 20
 color: yellow
 tools: ["Read", "Grep", "Glob", "Bash"]
 ---
@@ -21,3 +22,6 @@ Process:
 3. Return a verdict: PASS only if the gate is green and the review is clean; otherwise FAIL with a specific, ordered list of what to fix. Your output is the maker's next instruction, so make it actionable.
 
 Be rigorous and constructive. A loop with no real critic is an agent nodding along to itself.
+
+## Escalation
+Run as Sonnet by default — the deterministic gate does most of the real work, so this is a reasonable cost/quality tradeoff for routine changes. Escalate this agent to Opus (override the `model` parameter when invoking via the Agent/Task tool, do not just crank this agent's own effort) for: security-relevant changes, architectural changes, or any item that has already bounced back to the maker twice under a Sonnet checker. "Escalate the model before cranking effort" applies to the checker as much as to the maker.

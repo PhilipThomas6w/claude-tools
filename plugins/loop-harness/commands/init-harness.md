@@ -27,7 +27,7 @@ Create `docs/VISION.md` from `${CLAUDE_PLUGIN_ROOT}/templates/VISION.md`, filled
 Create `STATE.md` from `${CLAUDE_PLUGIN_ROOT}/templates/STATE.md` at the root (or the relevant work-stream folder), seeded with the queue from Step 0.
 
 ## Step 3: verify gate
-Create `build/verify.ps1` from the matching template in `${CLAUDE_PLUGIN_ROOT}/templates/verify/` (all templates are PowerShell). Wire each stage to this project's real commands. Ensure it supports `-Fast` and exits non-zero on any failure. Run it once (`pwsh -File build/verify.ps1`) to confirm a green baseline.
+Create `build/verify.ps1` from the matching template in `${CLAUDE_PLUGIN_ROOT}/templates/verify/` (all templates are PowerShell). Wire each stage to this project's real commands — see the `verify-gate-authoring` skill for what makes a stage real versus a placeholder. Ensure it supports `-Fast` and exits non-zero on any failure. Run it once (`pwsh -File build/verify.ps1`) and read the output: the shipped templates fail loudly ("stage not wired") on any stage you have not yet wired, specifically so this cannot be mistaken for a green baseline. Do not report Step 3 done until every stage has been wired and the script actually exits 0 on real checks — a pass caused by an unwired stage is not a baseline.
 
 ## Step 4: repo CLAUDE.md
 Add a repo-level `CLAUDE.md` "Project law" section if one does not exist: the hard constraints, "done means build/verify.ps1 exits 0", the local gate commands, and the model-routing block (default Sonnet 5 medium; escalate the genuinely hard reasoning to the strongest model; anything cyber to Opus). Do not duplicate the user's global CLAUDE.md.
@@ -35,8 +35,12 @@ Add a repo-level `CLAUDE.md` "Project law" section if one does not exist: the ha
 ## Step 5: ledger
 Create `docs/harness/LEDGER.csv` from the template.
 
-## Step 6: confirm hooks
-Tell the user the plugin's hooks (SessionStart context, Bash deny-list, Stop gate) are already active because the plugin is installed; nothing to wire into settings.
+## Step 6: hook self-test (do not just assert)
+Hooks bind when a Claude Code session starts. If this plugin was installed and `/init-harness` is being run in the *same* session, its hooks are stale — this command and its own skills load mid-session fine, but hooks do not. Do not tell the user hooks are simply "already active because the plugin is installed"; verify it:
+
+1. Run a harmless command that matches the Bash guard's deny-list, for example `echo terraform apply`.
+2. If it is blocked (exit code 2, the loop-harness message), hooks are live in this session — tell the user so.
+3. If it runs and merely echoes the text, hooks are stale in this session. Tell the user plainly: start a new session before relying on the Stop gate, the Bash/PowerShell guard, or the SessionStart context injection. Do not claim the harness is fully wired until that fresh session confirms it.
 
 ## Step 7: summarise
 Summarise what was created, whether VISION and STATE were distilled from design docs or gathered by interview, and what the user still needs to fill in.

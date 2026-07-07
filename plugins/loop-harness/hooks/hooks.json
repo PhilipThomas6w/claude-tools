@@ -4,9 +4,12 @@
       { "matcher": "", "hooks": [ { "type": "command", "command": "pwsh -NoProfile -File ${CLAUDE_PLUGIN_ROOT}/scripts/session-context.ps1", "timeout": 15 } ] }
     ],
     "PreToolUse": [
-      { "matcher": "Bash", "hooks": [ { "type": "command", "command": "pwsh -NoProfile -File ${CLAUDE_PLUGIN_ROOT}/scripts/guard-bash.ps1", "timeout": 15 } ] }
+      { "matcher": "Bash|PowerShell", "hooks": [ { "type": "command", "command": "pwsh -NoProfile -File ${CLAUDE_PLUGIN_ROOT}/scripts/guard-bash.ps1", "timeout": 15 } ] }
     ],
     "Stop": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "pwsh -NoProfile -File ${CLAUDE_PLUGIN_ROOT}/scripts/run-verify.ps1", "timeout": 600 } ] }
+    ],
+    "SubagentStop": [
       { "matcher": "", "hooks": [ { "type": "command", "command": "pwsh -NoProfile -File ${CLAUDE_PLUGIN_ROOT}/scripts/run-verify.ps1", "timeout": 600 } ] }
     ]
   }

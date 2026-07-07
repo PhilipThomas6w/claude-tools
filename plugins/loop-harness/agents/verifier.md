@@ -9,6 +9,7 @@ assistant: "I'll run the verifier agent to execute the gate and report."
 <commentary>A cheap, deterministic gate run with no side effects.</commentary>
 </example>
 model: haiku
+effort: low
 color: yellow
 tools: ["Bash", "Read"]
 ---

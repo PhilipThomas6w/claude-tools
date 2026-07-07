@@ -10,10 +10,10 @@ PowerShell 7+ (`pwsh`) on the PATH. The hooks and the verify entrypoint (`build/
 
 - **Hooks** (active while enabled):
   - SessionStart injects `docs/VISION.md` and the nearest `STATE.md`, and points the agent at `openwiki/` if present (the anti-drift brake).
-  - PreToolUse(Bash) blocks deploy and destructive commands (deployment is pipeline-gated).
-  - Stop runs `build/verify.ps1 -Fast` and refuses to finish until it passes (the Ralph Wiggum defence).
+  - PreToolUse(Bash|PowerShell) blocks deploy and destructive commands (deployment is pipeline-gated). This is a convention fence, not a security boundary — a deny-list can be deliberately worked around. For unattended/headless runs, also pin `--allowedTools` or use sandboxing.
+  - Stop and SubagentStop both run `build/verify.ps1 -Fast` and refuse to finish until it passes (the Ralph Wiggum defence) — registered on both events so a `maker` sub-agent's own turn is gated, not only the main session's. Skipped automatically when the working tree has no uncommitted changes, so a pre-existing red repo doesn't block unrelated read-only turns. Enforces a real cap of 5 consecutive failures per session before it stops blocking and instead tells Claude to record the blocker in `STATE.md`.
 - **Sub-agents**: `explorer` (read-only mapping), `maker` (one scoped change, isolated), `checker` (runs the gate, reviews the diff), `verifier` (deterministic gate run). The maker never grades its own work.
-- **Commands**: `/init-harness [stack]` scaffolds the per-project files; `/doc-refresh` maintains the codebase wiki (OpenWiki / Karpathy pattern).
+- **Commands**: `/init-harness [stack]` scaffolds the per-project files; `/doc-refresh` maintains the codebase wiki (OpenWiki / Karpathy pattern); `/work-next` drives one full maker→checker cycle off the top of `STATE.md`'s queue, stopping on the round-trip cap — the harness's minimal automation layer.
 - **Skills**: `harness-conventions` (the loop discipline), `add-change` (the gated change procedure), `harness-audit` (claim-vs-enforcement review of any harness/hook/gate), `claude-code-hook-facts` (verified hook registration timing and output schemas), `verify-gate-authoring` (what makes a verify stage real vs a placeholder).
 - **Templates**: `VISION.md`, `STATE.md`, `LEDGER.csv`, and per-stack `verify.ps1` scripts (dotnet, node, python, al, static).
 
@@ -22,6 +22,7 @@ PowerShell 7+ (`pwsh`) on the PATH. The hooks and the verify entrypoint (`build/
 1. Install the plugin (via your marketplace or locally). Ensure `pwsh` is on the PATH.
 2. In a repository, run `/init-harness` (or `/init-harness dotnet`). If design docs already exist in `docs/` (for example from a discovery/design process), it distils `docs/VISION.md` and the `STATE.md` queue from them and asks you to confirm; otherwise it interviews you. It then generates `build/verify.ps1` wired to your commands, a repo `CLAUDE.md` project-law section, and `docs/harness/LEDGER.csv`.
 3. Fill the goal and the first queue in `STATE.md`. Work one item at a time; the gate does the rest.
+4. **If you installed this plugin and ran `/init-harness` in the same session, restart the session before relying on the hooks.** Hooks (SessionStart, the Bash/PowerShell guard, the Stop gate) bind once at session start; installing or updating the plugin mid-session does not wire them into the session already running, even though commands and skills load fine mid-session. `/init-harness` Step 6 self-tests this and will tell you if a restart is needed — don't skip past that warning.
 
 ## Notes
 

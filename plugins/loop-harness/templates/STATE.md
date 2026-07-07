@@ -14,4 +14,4 @@
 <items awaiting a human>
 
 ## Log
-<one line per session: date, ~tokens, outcome>
+<one line per session: date, outcome, one-line note. Token counts and pass/fail are logged automatically to docs/harness/LEDGER.csv by the verify gate — don't self-estimate tokens here, the gate's transcript-derived figure is the real one>

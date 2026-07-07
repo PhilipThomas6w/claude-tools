@@ -9,6 +9,8 @@ assistant: "I'll hand it to the maker agent to implement per the project's conve
 <commentary>Single scoped implementation is the maker's remit; a separate checker decides whether it is done.</commentary>
 </example>
 model: sonnet
+effort: medium
+maxTurns: 20
 color: green
 tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
 ---

@@ -9,6 +9,7 @@ assistant: "I'll send the explorer agent to map it and report back."
 <commentary>Read-only reconnaissance is exactly the explorer's job, and it keeps large search output out of the main context.</commentary>
 </example>
 model: haiku
+effort: low
 color: cyan
 tools: ["Read", "Grep", "Glob"]
 ---
