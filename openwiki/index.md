@@ -1,6 +1,6 @@
 # openwiki: claude-tools
 
-A Claude Code plugin marketplace (`claude-tools`, GitHub: `PhilipThomas6w/claude-tools`) for professional software engineering. **`loop-harness` is the backbone, used for all implementation work on any stack — AI engineering is a subset of that work, not the whole of it.** `ai-project` and `ai-agent-pack` are the AI-specific pieces.
+A Claude Code plugin marketplace (`claude-tools`, GitHub: `PhilipThomas6w/claude-tools`) covering discovery, design, design review, and gated implementation. `loop-harness` handles implementation for any project; `ai-project` and `ai-agent-pack` are the AI-specific pieces (discovery/design, and agent-building tooling respectively).
 
 ## Pages
 - [[architecture]] — how the plugins fit together, and the discovery → design → design review → loop-harness workflow

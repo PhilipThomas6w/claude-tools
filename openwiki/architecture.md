@@ -6,7 +6,7 @@
 discovery ──> design ──> design review ──> handover to loop-harness (implementation, any stack)
 ```
 
-`loop-harness` is where **every** project ends up, AI or not — it is the general-purpose gate for implementation work, not one of two equally-weighted verticals. `ai-project` exists only to manage the discovery/design/review stages **when the project itself is an AI project**; for any other kind of work, those stages happen some other way (unassisted judgement, another process) and then still converge on `loop-harness` for implementation. Do not read this repo as "AI tooling" — it is a general engineering marketplace with one AI-specific front end (`ai-project`) and one AI-specific extension to the general backbone (`ai-agent-pack`).
+`loop-harness` handles implementation — every project converges there regardless of what kind of work it is. `ai-project` manages discovery/design/review for AI projects specifically. There's no dedicated discovery/design plugin for other project types yet (roadmap item); those stages are handled manually before handover to `loop-harness`.
 
 ```
 ai-project ──┬──> generic-docx        (document rendering, default style pack)
